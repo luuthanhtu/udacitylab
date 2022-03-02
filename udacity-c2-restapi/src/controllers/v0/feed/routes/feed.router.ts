@@ -29,8 +29,7 @@ router.patch('/:id',
 
 
 // Get a signed url to put a new item in the bucket
-router.get('/signed-url/:fileName', 
-    requireAuth, 
+router.get('/signed-url/:fileName',  
     async (req: Request, res: Response) => {
     let { fileName } = req.params;
     const url = AWS.getPutSignedUrl(fileName);
@@ -41,7 +40,6 @@ router.get('/signed-url/:fileName',
 // NOTE the file name is they key name in the s3 bucket.
 // body : {caption: string, fileName: string};
 router.post('/', 
-    requireAuth, 
     async (req: Request, res: Response) => {
     const caption = req.body.caption;
     const fileName = req.body.url;
