@@ -18,3 +18,18 @@ export const config = {
     "secret": process.env.JWT_TOKEN
   }
 }
+// export const config = {
+//   "dev": {
+//     "username": "udacitydatabase",
+//     "password": "udacitydatabase",
+//     "database": "udacitydatabase",
+//     "host": "udacitydatabase.cof7g5qbwlgx.us-east-1.rds.amazonaws.com",
+//     "dialect": "postgres",
+//     "aws_region": "us-east-1",
+//     "aws_profile": "udacityprofile",
+//     "aws_media_bucket": "udacitylab-tult13-bucket"
+//   },
+//   "jwt": {
+//     "secret": "Test"
+//   }
+// }

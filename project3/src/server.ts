@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 
 import { V0MODELS } from './controllers/v0/model.index';
 import {filterImageFromURL} from './util/util'
+import { requireAuth } from './controllers/v0/users/routes/auth.router';
 
 (async () => {
   await sequelize.addModels(V0MODELS);
@@ -31,10 +32,10 @@ import {filterImageFromURL} from './util/util'
     res.send( "/api/v0/" );
   } );
   
-  app.get( "/filteredimage", async ( req, res ) => {
-
+  app.get( "/filteredimage",requireAuth, async ( req, res ) => {
+    
     const image_url = req.query.image_url as string;
-  
+    
     if ( !image_url ) {
       return res.status(400)
                 .send(`url is required`);

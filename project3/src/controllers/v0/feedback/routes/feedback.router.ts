@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { FeedBack } from '../models/FeedBack';
 import { requireAuth } from '../../users/routes/auth.router';
 import * as AWS from '../../../../aws';
+import { all, any } from 'bluebird';
 
 const router: Router = Router();
 
@@ -21,25 +22,25 @@ router.get('/', async (req: Request, res: Response) => {
 
 // update a specific resource
 router.patch('/:id', 
-    // requireAuth, 
+    requireAuth, 
     async (req: Request, res: Response) => {
-        //@TODO try it yourself
-        res.status(500).send("not implemented")
+        let {id} = req.params;
+        let {description} = req.body;
+        const item = await FeedBack.update(
+            { description: description },
+            { where: { id: id } }
+          )
+          return res.status(200)
+          .send(`ok`);
 });
 
 
-// Get a signed url to put a new item in the bucket
-router.get('/signed-url/:filename',  
-    async (req: Request, res: Response) => {
-    let { fileName } = req.params;
-    const url = AWS.getPutSignedUrl(fileName);
-    res.status(201).send({url: url});
-});
 
 // Post meta data and the filename after a file is uploaded 
 // NOTE the file name is they key name in the s3 bucket.
 // body : {caption: string, fileName: string};
-router.post('/', 
+router.post('/',
+    requireAuth,
     async (req: Request, res: Response) => {
     const creator = req.body.creator;
     const description = req.body.description;
