@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "2fea8493-17e1-4574-b94e-816dfdb3228e",
+		"name": "cloud-cdnd-c2-final Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\":\"jimmy@gmail.com\",\r\n\t\"password\":\"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://{{HOST}}/api/v0/users/auth",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"users",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\":\"jimmy@gmail.com\",\r\n\t\"password\":\"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://{{HOST}}/api/v0/users/auth/login",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v0",
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "filteredimage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppbW15QGdtYWlsLmNvbSIsInBhc3N3b3JkX2hhc2giOiIkMmIkMTAkczJTYW5iOFAzVFNxSDVvV0xobkpBZU9odDU5MDZGMzNndVRiUkxHNHlNUTR5M2tVQ0pINkciLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NVoiLCJpYXQiOjE2NDY0NTkyMzJ9.Qexuhl1QW-N1O5DhF7F4SVsalkXVP9YyOKr_qRYhLp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getfeedback",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppbW15QGdtYWlsLmNvbSIsInBhc3N3b3JkX2hhc2giOiIkMmIkMTAkczJTYW5iOFAzVFNxSDVvV0xobkpBZU9odDU5MDZGMzNndVRiUkxHNHlNUTR5M2tVQ0pINkciLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NVoiLCJpYXQiOjE2NDY0NTkyMzJ9.Qexuhl1QW-N1O5DhF7F4SVsalkXVP9YyOKr_qRYhLp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{HOST}}/api/v0/feedback",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v0",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatefeedback by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppbW15QGdtYWlsLmNvbSIsInBhc3N3b3JkX2hhc2giOiIkMmIkMTAkczJTYW5iOFAzVFNxSDVvV0xobkpBZU9odDU5MDZGMzNndVRiUkxHNHlNUTR5M2tVQ0pINkciLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NVoiLCJpYXQiOjE2NDY0NTkyMzJ9.Qexuhl1QW-N1O5DhF7F4SVsalkXVP9YyOKr_qRYhLp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caption\": \"you are doing well\"\r\n}"
+				},
+				"url": {
+					"raw": "http://{{HOST}}/api/v0/feed/1",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v0",
+						"feed",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatefeed by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppbW15QGdtYWlsLmNvbSIsInBhc3N3b3JkX2hhc2giOiIkMmIkMTAkczJTYW5iOFAzVFNxSDVvV0xobkpBZU9odDU5MDZGMzNndVRiUkxHNHlNUTR5M2tVQ0pINkciLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NVoiLCJpYXQiOjE2NDY0NTkyMzJ9.Qexuhl1QW-N1O5DhF7F4SVsalkXVP9YyOKr_qRYhLp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"you are doing well\"\r\n}"
+				},
+				"url": {
+					"raw": "http://{{HOST}}/api/v0/feedback/1",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v0",
+						"feedback",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "feedback",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImppbW15QGdtYWlsLmNvbSIsInBhc3N3b3JkX2hhc2giOiIkMmIkMTAkczJTYW5iOFAzVFNxSDVvV0xobkpBZU9odDU5MDZGMzNndVRiUkxHNHlNUTR5M2tVQ0pINkciLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTA1VDA1OjA2OjIyLjI1NVoiLCJpYXQiOjE2NDY0NTkyMzJ9.Qexuhl1QW-N1O5DhF7F4SVsalkXVP9YyOKr_qRYhLp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"creator\": \"batman\",\n    \"description\": \"batman\"\n}"
+				},
+				"url": {
+					"raw": "http://{{HOST}}/api/v0/feedback",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v0",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:8082",
+			"type": "string"
+		}
+	]
+}

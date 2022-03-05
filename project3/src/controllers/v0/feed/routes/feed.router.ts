@@ -23,8 +23,14 @@ router.get('/', async (req: Request, res: Response) => {
 router.patch('/:id', 
     requireAuth, 
     async (req: Request, res: Response) => {
-        //@TODO try it yourself
-        res.status(500).send("not implemented")
+        let {id} = req.params;
+        let {caption} = req.body;
+        const item = await FeedItem.update(
+            { caption: caption },
+            { where: { id: id } }
+          )
+          return res.status(200)
+          .send(`ok`);
 });
 
 
