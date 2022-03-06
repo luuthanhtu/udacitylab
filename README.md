@@ -1,16 +1,7 @@
 # website url
-
-https://das8nxfrpj4fn.cloudfront.net
-
-http://my-588928720371-bucket.s3-website-us-east-1.amazonaws.com
+http://image-filter-starter-code-dev22.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg
 
 
-#Additional Review 
+![alt text](image-filter-starter-code/deployment_screenshots/deployment_screenshot.png "Title")
 
 
-I was confuse about the step to config s3 access policy in cloudfont since it appears only when we choose the s3 in dropdown list.
-
-![alt text](cloudfont-config-question.png "Title")
-
-
-![alt text](cloudfont-config-question-2.png "Title")

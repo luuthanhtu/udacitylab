@@ -38,7 +38,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // app.get( "/filteredimage", async ( req, res ) => {
 
 
-  app.get( "/filteredimage", async ( req, res ) => {
+  app.get( "/filteredimage", async ( req: express.Request, res: express.Response ) => {
 
     let image_url = req.query.image_url as string;
 
@@ -52,12 +52,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     res.status(200).sendFile(imagePath, function (err) {
       if (err) {
       } else {
-        convertFile(imagePath);
+        convertFunctionDeteletoString(imagePath);
       }
     });
 
   });
-  function convertFile(image: string) {
+  function convertFunctionDeteletoString(image: string) {
     deleteLocalFiles( [ image ] ).then(() => console.debug('deleted'));
   }
   app.get( "/", async ( req, res ) => {
