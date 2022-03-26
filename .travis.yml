@@ -11,13 +11,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  - unzip awscliv2.zip
-  - sudo ./aws/install
-  - aws configure set aws_access_key_id ACCESS_KEY
-  - aws configure set aws_secret_access_key SECRET_KEY
 
 install:
-  - docker-compose -f docker-compose-build.yaml build --parallel
-  - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/z9g7t3c1
-  - docker-compose -f docker-compose-build.yaml push
+  - docker-compose -f udagram-deployment/docker-compose-build.yaml build --parallel
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker-compose -f udagram-deployment/docker-compose-build.yaml push
