@@ -1,4 +1,7 @@
-FROM node:12
+FROM node:12-alpine
+ARG MAX_OLD_SPACE_SIZE=4096
+ARG NPM_TOKEN
+ENV NODE_OPTIONS=--max-old-space-size=${MAX_OLD_SPACE_SIZE}
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies

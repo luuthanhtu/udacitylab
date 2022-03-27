@@ -1,58 +1,59 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
  labels:
-   service: backend-user
+   app: backend-user
  name: backend-user
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: backend-user
   template:
     metadata:
       labels:
-        service: backend-user
+        app: backend-user
     spec:
       containers:
-      - image: luuthanhtu/udagram-backend-user
-        name: backend-user
-        imagePullPolicy: Always
+      - name: backend-user
+        image: luuthanhtu/udagram-backend-user:latest
+        imagePullPolicy: Always  
         resources:
           requests:
-            memory: "128Mi"
+            memory: "512Mi"
             cpu: "250m"
           limits:
-            memory: "2048Mi"
+            memory: "1024Mi"
             cpu: "500m"
+        envFrom:
+        - configMapRef:
+            name: env-config
         env:
-        - name: URL
+        - name: POSTGRES_USERNAME
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: URL
-        - name: JWT_SECRET
+              key: POSTGRES_USERNAME 
+        - name: POSTGRES_PASSWORD
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: JWT_SECRET
-        - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_DB
+              key: POSTGRES_PASSWORD
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: env-config
               key: POSTGRES_HOST
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRES_DB
           valueFrom:
-            secretKeyRef:
-              name: env-secret
-              key: POSTGRES_PASSWORD
-        - name: POSTGRES_USERNAME
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_DB
+        - name: AWS_BUCKET
           valueFrom:
-            secretKeyRef:
-              name: env-secret
-              key: POSTGRES_USERNAME
+            configMapKeyRef:
+              name: env-config
+              key: AWS_BUCKET
         - name: AWS_REGION
           valueFrom:
             configMapKeyRef:
@@ -63,9 +64,14 @@ spec:
             configMapKeyRef:
               name: env-config
               key: AWS_PROFILE
-        - name: AWS_BUCKET
+        - name: JWT_SECRET
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: AWS_BUCKET
+              key: AWS_PROFILE
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: URL
       restartPolicy: Always
