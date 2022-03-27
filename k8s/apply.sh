@@ -26,4 +26,4 @@ kubectl logs deployment/backend-feed
 kubectl describe pod backend-user
 kubectl describe deploy backend-user
 kubectl logs deployment/backend-user
-kubectl logs backend-feed-65b89c7d5d-4mnkm -n default
+kubectl logs backend-feed-644496f76c-5zbfp -n default
